@@ -1,0 +1,55 @@
+ReqRes OpenAPI endpoint evidence
+Source: https://reqres.in/openapi.json
+
+GET    /api/users                                       List users (legacy)
+POST   /api/users                                       Create user (legacy)
+GET    /api/users/{id}                                  Get user by id (legacy)
+PUT    /api/users/{id}                                  Update user (legacy)
+PATCH  /api/users/{id}                                  Patch user (legacy)
+DELETE /api/users/{id}                                  Delete user (legacy)
+GET    /api/unknown                                     List resources (legacy)
+GET    /api/unknown/{id}                                Get resource by id (legacy)
+POST   /api/register                                    Register user
+POST   /api/login                                       Login user
+POST   /api/logout                                      Logout user
+GET    /api/collections                                 List collections
+POST   /api/collections                                 Create collection
+GET    /api/collections/{slug}                          Get collection
+PUT    /api/collections/{slug}                          Update collection
+DELETE /api/collections/{slug}                          Delete collection
+GET    /api/collections/{slug}/records                  List records
+POST   /api/collections/{slug}/records                  Create record
+GET    /api/collections/{slug}/records/{recordId}       Get record
+PUT    /api/collections/{slug}/records/{recordId}       Update record
+DELETE /api/collections/{slug}/records/{recordId}       Delete record
+POST   /api/app-users/login                             App user login
+POST   /api/app-users/verify                            Verify app user token
+GET    /api/app-users/me                                Current app user
+GET    /api/app-users                                   List app users
+POST   /api/app-users                                   Create app user
+GET    /api/app-users/{id}                              Get app user
+PUT    /api/app-users/{id}                              Update app user
+DELETE /api/app-users/{id}                              Delete app user
+POST   /api/app-users/{id}/sessions/simulate            Simulate app user session
+GET    /api/projects/{projectId}/app-users              List project app users
+GET    /api/projects/{projectId}/app-users/total        App users total
+GET    /api/custom/{path}                               Execute custom endpoint
+POST   /api/custom/{path}                               Execute custom endpoint
+PUT    /api/custom/{path}                               Execute custom endpoint
+PATCH  /api/custom/{path}                               Execute custom endpoint
+DELETE /api/custom/{path}                               Execute custom endpoint
+GET    /app/me                                          App user profile
+GET    /app/collections                                 List collections (app user)
+GET    /app/collections/{slug}                          Get collection (app user)
+GET    /app/collections/{slug}/records                  List records (app user)
+POST   /app/collections/{slug}/records                  Create record (app user)
+GET    /app/collections/{slug}/records/{recordId}       Get record (app user)
+PUT    /app/collections/{slug}/records/{recordId}       Update record (app user)
+DELETE /app/collections/{slug}/records/{recordId}       Delete record (app user)
+GET    /agent/v1/health                                 Agent Sandbox health probe
+GET    /agent/v1/users                                  List agent users (cursor pagination)
+GET    /agent/v1/users/{id}                             Get a single agent user with optional expansion
+POST   /agent/v1/auth/login                             Agent auth login (with MFA branch)
+GET    /agent/v1/orders                                 List agent orders (relational data)
+GET    /agent/v1/scenarios                              List training scenarios
+GET    /agent/v1/scenarios/{scenario}                   Trigger a deliberate failure scenario

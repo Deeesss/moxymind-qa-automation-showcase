@@ -1,0 +1,24 @@
+{
+  "name": "moxymind-qa-automation-showcase",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Polished but scoped QA automation showcase for API, frontend, and optional mobile automation.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "verify:reqres-env": "node ./scripts/verify-reqres-env.mjs",
+    "test": "playwright test",
+    "test:api": "playwright test --project=api",
+    "test:frontend": "playwright test --project=chromium",
+    "test:frontend:headed": "playwright test --project=chromium --headed",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1",
+    "@types/node": "26.1.1",
+    "typescript": "6.0.3"
+  }
+}

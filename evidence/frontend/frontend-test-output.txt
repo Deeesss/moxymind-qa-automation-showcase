@@ -1,0 +1,15 @@
+
+> moxymind-qa-automation-showcase@1.0.0 test:frontend
+> playwright test --project=chromium
+
+
+Running 6 tests using 6 workers
+
+  ok 1 [chromium] › tests\frontend\sauce-auth.spec.ts:17:3 › SauceDemo authentication › locked user is rejected with a visible error (4.1s)
+  ok 4 [chromium] › tests\frontend\sauce-auth.spec.ts:7:3 › SauceDemo authentication › standard user can sign in and reach the inventory (4.2s)
+  ok 3 [chromium] › tests\frontend\sauce-cart.spec.ts:24:3 › SauceDemo inventory and cart › sorts products by ascending price (4.3s)
+  ok 2 [chromium] › tests\frontend\sauce-cart.spec.ts:14:3 › SauceDemo inventory and cart › adds and removes a product from the cart (4.3s)
+  ok 5 [chromium] › tests\frontend\sauce-checkout.spec.ts:17:3 › SauceDemo checkout › blocks checkout when customer information is missing (4.5s)
+  ok 6 [chromium] › tests\frontend\sauce-checkout.spec.ts:32:3 › SauceDemo checkout › completes checkout for selected products (4.8s)
+
+  6 passed (6.7s)

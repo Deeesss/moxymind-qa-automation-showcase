@@ -1,0 +1,100 @@
+name: QA Automation
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  api:
+    name: API tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      REQRES_API_KEY: ${{ secrets.REQRES_API_KEY }}
+      REQRES_BASE_URL: https://reqres.in
+      API_RESPONSE_TIME_LIMIT_MS: 2000
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Report ReqRes auth mode
+        run: |
+          if [ -n "$REQRES_API_KEY" ]; then
+            echo "REQRES_API_KEY is configured. Authenticated ReqRes tests will run."
+          else
+            echo "REQRES_API_KEY is not configured. Public negative ReqRes boundary will run; authenticated ReqRes tests will be skipped."
+          fi
+
+      - name: Run API tests
+        run: npm run test:api
+
+      - name: Upload API Playwright report
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: playwright-report-api
+          path: playwright-report/
+          if-no-files-found: ignore
+
+      - name: Upload API test results
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-results-api
+          path: test-results/
+          if-no-files-found: ignore
+
+  frontend:
+    name: Frontend tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SAUCEDEMO_BASE_URL: https://www.saucedemo.com
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: 26
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run frontend tests
+        run: npm run test:frontend
+
+      - name: Upload frontend Playwright report
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: playwright-report-frontend
+          path: playwright-report/
+          if-no-files-found: ignore
+
+      - name: Upload frontend test results
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: test-results-frontend
+          path: test-results/
+          if-no-files-found: ignore
