@@ -26,7 +26,7 @@ Out of scope:
 
 ### API
 
-The API layer is the highest priority because it is fast, deterministic when the service is healthy, and validates response contracts directly. ReqRes now requires `x-api-key`, so authenticated tests fail fast when `REQRES_API_KEY` is missing. One unauthenticated negative test remains runnable without a key to prove the auth boundary.
+The API layer is the highest priority because it is fast, deterministic when the service is healthy, and validates response contracts directly. ReqRes now requires `x-api-key`, so authenticated tests are skipped when `REQRES_API_KEY` is missing. One unauthenticated negative test remains runnable without a key to prove the auth boundary.
 
 Covered API patterns:
 
