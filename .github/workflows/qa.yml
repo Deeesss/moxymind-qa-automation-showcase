@@ -44,7 +44,7 @@ jobs:
 
       - name: Upload API Playwright report
         if: success()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report-api
           path: playwright-report/
@@ -52,7 +52,7 @@ jobs:
 
       - name: Upload API test results
         if: success()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: test-results-api
           path: test-results/
@@ -85,7 +85,7 @@ jobs:
 
       - name: Upload frontend Playwright report
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-report-frontend
           path: playwright-report/
@@ -93,7 +93,7 @@ jobs:
 
       - name: Upload frontend test results
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: test-results-frontend
           path: test-results/
