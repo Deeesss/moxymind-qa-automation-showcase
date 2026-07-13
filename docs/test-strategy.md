@@ -71,7 +71,8 @@ Playwright generates:
 
 - list output in the terminal
 - HTML report in `playwright-report/`
-- traces/screenshots/videos retained on failure
+- frontend traces/screenshots/videos retained on failure
+- API network traces disabled so authenticated request headers are not retained in failure artifacts
 
 Use:
 
@@ -81,7 +82,7 @@ npm run report
 
 ## CI Strategy
 
-GitHub Actions runs API and frontend jobs separately. The API job validates that `REQRES_API_KEY` exists before executing authenticated tests. The frontend job installs Chromium and runs the SauceDemo suite.
+GitHub Actions runs API and frontend jobs separately. The API job reports whether `REQRES_API_KEY` is configured. Authenticated tests run when the secret is available; otherwise only the public negative boundary runs. The frontend job installs Chromium and runs the SauceDemo suite.
 
 ## Stability Controls
 

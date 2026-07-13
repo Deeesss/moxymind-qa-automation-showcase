@@ -34,6 +34,7 @@ Required tools:
 Build the included Android demo APK:
 
 ```powershell
+cd mobile
 gradle :android-demo-app:assembleDebug
 ```
 

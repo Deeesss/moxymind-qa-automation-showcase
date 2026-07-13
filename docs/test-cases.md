@@ -28,9 +28,9 @@ The four core cases satisfy the requested essential scope. The two additional ca
 
 | ID | Priority | Scenario | Expected Result | Automated |
 | --- | --- | --- | --- | --- |
-| MOB-001 | Low | Launch configured Android app through Appium | Driver session is created; configured package is foregrounded | Optional |
-| MOB-002 | Low | Log in with valid credentials on Android and iOS | Tasks screen, all three rows, and logout control are visible | Optional |
-| MOB-003 | Low | Log in with invalid credentials on Android and iOS | Exact validation error is visible and Tasks screen is not opened | Optional |
-| MOB-004 | Low | Select Mobile automation on Android and iOS | Detail title and coverage description are visible | Optional |
+| MOB-001 | Low | Launch configured Android app through Appium | Driver session is created; configured package is foregrounded | Yes |
+| MOB-002 | Low | Log in with valid credentials on Android and iOS | Tasks screen, all three rows, and logout control are visible | Yes |
+| MOB-003 | Low | Log in with invalid credentials on Android and iOS | Exact validation error is visible and Tasks screen is not opened | Yes |
+| MOB-004 | Low | Select Mobile automation on Android and iOS | Detail title and coverage description are visible | Yes |
 
 Mobile cases are intentionally not part of the main CI gate.

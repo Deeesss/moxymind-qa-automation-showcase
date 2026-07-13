@@ -43,7 +43,7 @@ jobs:
         run: npm run test:api
 
       - name: Upload API Playwright report
-        if: always()
+        if: success()
         uses: actions/upload-artifact@v5
         with:
           name: playwright-report-api
@@ -51,7 +51,7 @@ jobs:
           if-no-files-found: ignore
 
       - name: Upload API test results
-        if: always()
+        if: success()
         uses: actions/upload-artifact@v5
         with:
           name: test-results-api
