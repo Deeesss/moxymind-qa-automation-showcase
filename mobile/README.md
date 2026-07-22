@@ -44,20 +44,31 @@ Built APK path:
 mobile/android-demo-app/build/outputs/apk/debug/android-demo-app-debug.apk
 ```
 
-Environment:
+Start the configured AVD in a separate PowerShell terminal. Android Studio is not required once the Android SDK, emulator, and AVD are installed:
 
 ```powershell
+$emulator = "$env:LOCALAPPDATA\Android\Sdk\emulator\emulator.exe"
+& $emulator -list-avds
+& $emulator -avd Moxymind_Android_API_36
+```
+
+The list command confirms that `Moxymind_Android_API_36` exists before launch. Wait until the Android home screen is visible.
+
+Start Appium in a second terminal and leave it running:
+
+```powershell
+appium
+```
+
+Configure and run the tests from a third terminal opened at the repository root:
+
+```powershell
+cd mobile
 $env:MOBILE_PLATFORM="android"
 $env:MOBILE_APP_PATH=(Resolve-Path ".\android-demo-app\build\outputs\apk\debug\android-demo-app-debug.apk").Path
 $env:APPIUM_SERVER_URL="http://127.0.0.1:4723"
 $env:ANDROID_DEVICE_NAME="Moxymind_Android_API_36"
 $env:MOBILE_EXPECTED_PACKAGE="com.example.MoxymindDemoApp"
-```
-
-Run:
-
-```powershell
-appium
 gradle testAndroid
 ```
 
