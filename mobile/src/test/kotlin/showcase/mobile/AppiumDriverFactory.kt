@@ -26,6 +26,7 @@ object AppiumDriverFactory {
         options.setAutomationName("UiAutomator2")
         options.setDeviceName(System.getenv("ANDROID_DEVICE_NAME") ?: "Android Emulator")
         options.setApp(appPath)
+        options.setEnforceAppInstall(true)
         options.setAutoGrantPermissions(true)
         options.setNewCommandTimeout(Duration.ofSeconds(60))
 

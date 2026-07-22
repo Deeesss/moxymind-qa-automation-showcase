@@ -44,6 +44,22 @@ Built APK path:
 mobile/android-demo-app/build/outputs/apk/debug/android-demo-app-debug.apk
 ```
 
+### Replacing the Android app
+
+The Android Appium configuration uses `enforceAppInstall=true`. Every `gradle testAndroid` run therefore reinstalls the APK referenced by `MOBILE_APP_PATH`, including when the new build has the same Android `versionCode` as the installed app. This prevents an older build from remaining in the emulator.
+
+To replace the app manually before inspecting it without Appium, run these commands from `mobile/` after building the APK:
+
+```powershell
+$adb = "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe"
+$apk = (Resolve-Path ".\android-demo-app\build\outputs\apk\debug\android-demo-app-debug.apk").Path
+
+& $adb uninstall com.example.MoxymindDemoApp
+& $adb install $apk
+```
+
+The uninstall command intentionally removes the previous app data as well as the old APK. After the clean install, either start the app from the emulator or run `gradle testAndroid`; Appium launches the configured APK automatically.
+
 Start the configured AVD in a separate PowerShell terminal. Android Studio is not required once the Android SDK, emulator, and AVD are installed:
 
 ```powershell
